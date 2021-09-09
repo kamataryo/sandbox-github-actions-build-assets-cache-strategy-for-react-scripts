@@ -30,7 +30,8 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ./build
-        key: build-assets-${{ github.event.pull_request.base.sha }}
+        key: build-assets-${{ github.sha }}
+        if: "{{ github.ref == 'ref/head/main' }}"
 
     - run: yarn
     - run: yarn build
