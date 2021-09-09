@@ -30,7 +30,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ./build
-        key: build-assets-on-main
+        key: build-assets-${{ github.event.pull_request.base.sha }}
 
     - run: yarn
     - run: yarn build
