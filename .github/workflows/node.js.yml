@@ -26,12 +26,16 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
 
+    - name: Get main SHA
+      run: export MAIN_BRANCH_SHA=$(git rev-parse main)
+
     - name: Cache the built for react-scripts
       uses: actions/cache@v2
-      if: github.ref == 'refs/heads/main'
       with:
         path: ./build
         key: build-assets-${{ github.sha }}
+        restore-keys: |
+          build-assets-${{ env.MAIN_BRANCH_SHA }}
 
     - run: yarn
     - run: yarn build
