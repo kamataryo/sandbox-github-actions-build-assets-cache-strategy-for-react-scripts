@@ -36,6 +36,6 @@ jobs:
         key: build-assets-${{ github.sha }}
         restore-keys: |
           build-assets-${{ env.MAIN_BRANCH_SHA }}
-
+    - run: echo $MAIN_BRANCH_SHA
     - run: yarn
     - run: yarn build
