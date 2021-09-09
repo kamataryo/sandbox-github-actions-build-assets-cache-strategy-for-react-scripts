@@ -28,7 +28,7 @@ jobs:
 
     - name: Cache the built for react-scripts
       uses: actions/cache@v2
-      if: github.ref == 'ref/heads/main'
+      if: github.ref == 'refs/heads/main'
       with:
         path: ./build
         key: build-assets-${{ github.sha }}
